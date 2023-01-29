@@ -22,6 +22,11 @@ public class OAuthController {
     AccessToken accessToken = new AccessToken();
     accessToken.setToken(token);
     accessTokenRepository.save(accessToken);
-    response.sendRedirect("/success");
+    response.sendRedirect("/welcome");
   }
+
+  @GetMapping("/welcome")
+    public String home(){
+        return "home";
+    }
 }
