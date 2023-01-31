@@ -13,11 +13,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import destiny.manager.destiny.AccessToken;
+import destiny.manager.destiny.MyApiData;
+import destiny.manager.destiny.MyApiResponse;
 import destiny.manager.destiny.Repositorys.AccessTokenRepository;
 
-@Controller
+@RestController
 public class GetDataController {
     
     @Autowired
@@ -26,19 +30,26 @@ public class GetDataController {
     @Autowired
     private AccessTokenRepository accessTokenRepository;
 
-    // @GetMapping("/user-data")
-    // public String getUserData(Model model){
+     @GetMapping("/user-data")
+     public String getUserData(Model model){
 
-    //     String accessToken = accessTokenRepository.findByToken(" ").getToken();
+        AccessToken accessToken = accessTokenRepository.findByToken(null);
+        if(accessToken == null){
+            return "Error: Access Token Not Found";
+        }
+            String token = accessToken.getToken();
+        
 
-    //     HttpHeaders headers = new HttpHeaders();
-    //     headers.set("Authorization", "Bearer" + accessToken);
-    //     HttpEntity<String> entity = new HttpEntity<>(headers);
-    //     ResponseEntity<MyApiResponse> response = restTemplate.exchange("https://www.bungie.net/Platform/User/GetCurrentBungieAccount", HttpMethod.GET, entity, MyApiResponse.class);
-    //     MyApiData apiData = response.getBody().getData();
+         // how do i pull the access token form the AccessTokenRepository and use it for the Get Request
 
-    //     model.addAttribute("accountName", apiData.getAccountName());
-    //     model.addAttribute("memberId", apiData.getMemberId());
-    //     return "bungie-data";
-    // }
+         HttpHeaders headers = new HttpHeaders();
+         headers.set("Authorization", "Bearer" + accessToken);
+         HttpEntity<String> entity = new HttpEntity<>(headers);
+         ResponseEntity<MyApiResponse> response = restTemplate.exchange("https://www.bungie.net/Platform/User/GetCurrentBungieAccount", HttpMethod.GET, entity, MyApiResponse.class);
+         MyApiData apiData = response.getBody().getData();
+
+         model.addAttribute("accountName", apiData.getAccountName());
+         model.addAttribute("memberId", apiData.getMemberId());
+         return "bungie-data";
+    }
 }

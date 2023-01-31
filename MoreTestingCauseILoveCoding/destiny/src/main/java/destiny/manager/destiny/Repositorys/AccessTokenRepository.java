@@ -11,12 +11,14 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface AccessTokenRepository extends JpaRepository<AccessToken, Long>{
     
-    List<AccessToken> findAll();
+    AccessToken findByToken(String token);
 
     @Transactional
     void deleteAll();
 
+    //in a @Repository class called AccessTokenRepository create a method that will retrieve a token from a database table which can then be used in my GetDataController and used for an api call
+
     
 
-    // create this getAccessTokenFromDatabase() method to get the token form the access_token table in the mysql database
+    
 }

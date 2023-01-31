@@ -1,4 +1,4 @@
-package destiny.manager.destiny;
+package destiny.manager.destiny.Controllers;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
