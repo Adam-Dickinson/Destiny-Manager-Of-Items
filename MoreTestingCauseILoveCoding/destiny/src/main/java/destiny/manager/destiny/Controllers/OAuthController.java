@@ -1,4 +1,4 @@
-package destiny.manager.destiny;
+package destiny.manager.destiny.Controllers;
 
 import java.io.IOException;
 
@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import destiny.manager.destiny.AccessToken;
+import destiny.manager.destiny.Repositorys.AccessTokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -27,6 +29,6 @@ public class OAuthController {
 
   @GetMapping("/data")
   public String data() {
-    return "index";
+    return "bungie-data";
   }
 }

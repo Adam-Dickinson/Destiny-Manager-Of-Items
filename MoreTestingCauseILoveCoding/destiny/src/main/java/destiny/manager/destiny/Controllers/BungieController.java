@@ -8,7 +8,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RestController
 public class BungieController {
 
-    @GetMapping("")
+    @GetMapping("/index")
     public String index(){
         return "index";
     }
