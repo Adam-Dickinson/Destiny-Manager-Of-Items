@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.client.RestTemplate;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,9 +15,6 @@ public class OAuthController {
 
   @Autowired
   private AccessTokenRepository accessTokenRepository;
-
-  @Autowired
-  private RestTemplate restTemplate;
 
   @GetMapping("/callback")
   public void handleCallback(HttpServletRequest request, HttpServletResponse response) throws IOException {
