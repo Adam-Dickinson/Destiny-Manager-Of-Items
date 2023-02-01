@@ -43,7 +43,7 @@ public class GetDataController {
          // how do i pull the access token form the AccessTokenRepository and use it for the Get Request
 
          HttpHeaders headers = new HttpHeaders();
-         headers.set("Authorization", "Bearer" + accessToken);
+         headers.set("Authorization", "Bearer" + token);
          HttpEntity<String> entity = new HttpEntity<>(headers);
          ResponseEntity<MyApiResponse> response = restTemplate.exchange("https://www.bungie.net/Platform/User/GetCurrentBungieAccount", HttpMethod.GET, entity, MyApiResponse.class);
          MyApiData apiData = response.getBody().getData();

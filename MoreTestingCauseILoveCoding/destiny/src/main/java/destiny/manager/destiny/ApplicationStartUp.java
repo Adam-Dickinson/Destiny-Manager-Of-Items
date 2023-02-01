@@ -10,12 +10,12 @@ import destiny.manager.destiny.Repositorys.AccessTokenRepository;
 @Component
 public class ApplicationStartUp implements ApplicationListener<ContextRefreshedEvent>{
     
-     private final AccessTokenRepository accessTokenRepository;
+    private final AccessTokenRepository accessTokenRepository;
 
-     @Autowired 
-     public ApplicationStartUp(AccessTokenRepository accessTokenRepository){
+    @Autowired
+    public ApplicationStartUp(AccessTokenRepository accessTokenRepository){
         this.accessTokenRepository = accessTokenRepository;
-     }
+    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
