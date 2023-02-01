@@ -1,4 +1,4 @@
-package destiny.manager.destiny;
+package destiny.manager.destiny.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
