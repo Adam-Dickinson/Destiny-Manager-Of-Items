@@ -34,13 +34,15 @@ public class GetDataController {
      public String getUserData(Model model){
 
         AccessToken accessToken = accessTokenRepository.findByToken(null);
+        accessTokenRepository.findByToken(accessToken)
+
         if(accessToken == null){
             return "Error: Access Token Not Found";
         }
             String token = accessToken.getToken();
         
 
-         // how do i pull the access token form the AccessTokenRepository and use it for the Get Request
+         
 
          HttpHeaders headers = new HttpHeaders();
          headers.set("Authorization", "Bearer" + token);
