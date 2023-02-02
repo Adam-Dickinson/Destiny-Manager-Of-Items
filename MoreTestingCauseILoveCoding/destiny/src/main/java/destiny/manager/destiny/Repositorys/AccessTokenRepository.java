@@ -10,9 +10,11 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface AccessTokenRepository extends JpaRepository<AccessToken, Long>{
     
-   // @Query("SELECT t from AccessToken t ")
+   
     //@Query(value="SELECT * from  access_token where token =:token", nativeQuery = true)
-    AccessToken findByToken(String token);
+   //AccessToken findByToken(AccessToken accessToken);
+
+   AccessToken findTopByOrderByIdDesc();
 
    // @Transactional
    // void deleteAll();

@@ -29,6 +29,6 @@ public class OAuthController {
 
   @GetMapping("/data")
   public String data() {
-    return "sub-page";
+    return "landing";
   }
 }

@@ -33,17 +33,13 @@ public class GetDataController {
      @GetMapping("/user-data")
      public String getUserData(Model model){
 
-        AccessToken accessToken = accessTokenRepository.findByToken(null);
-        accessTokenRepository.findByToken(accessToken)
+        AccessToken accessToken = accessTokenRepository.findTopByOrderByIdDesc();
 
         if(accessToken == null){
             return "Error: Access Token Not Found";
         }
             String token = accessToken.getToken();
         
-
-         
-
          HttpHeaders headers = new HttpHeaders();
          headers.set("Authorization", "Bearer" + token);
          HttpEntity<String> entity = new HttpEntity<>(headers);
