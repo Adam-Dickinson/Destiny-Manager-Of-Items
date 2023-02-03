@@ -16,7 +16,7 @@ public class BungieController {
     @GetMapping("/authorize")
     public RedirectView authorize() {
         String clientId = "42774";
-        String redirectUri = "https://adam-dickinson.github.io/Destiny-Manager-Of-Items/";
+        String redirectUri = "https";
         String bungieAuthUrl = "https://www.bungie.net/en/OAuth/Authorize?client_id=" + clientId + "&response_type=code&redirect_uri=" + redirectUri + "/callback";
 
         return new RedirectView(bungieAuthUrl);
