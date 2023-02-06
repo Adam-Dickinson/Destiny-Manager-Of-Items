@@ -29,7 +29,6 @@ public class TokenController {
     public String getToken(){
         return accessTokenService.getToken();
     }
-    
         @Value("${bungie.clientId}")
         private String clientId;
         @Value("${bungie.clientSecret}")

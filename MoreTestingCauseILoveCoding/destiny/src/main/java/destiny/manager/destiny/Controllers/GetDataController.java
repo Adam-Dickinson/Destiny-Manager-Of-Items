@@ -60,28 +60,6 @@ public class GetDataController {
     //      return "bungie-data";
     // }
 
-    public class TokenController {
-        @Value("${bungie.clientId}")
-        private String clientId;
-        @Value("${bungie.clientSecret}")
-        private String clientSecret;
-        @Value("${bungie.tokenUrl}")
-        private String tokenUrl;
-      
-        @PostMapping("/getToken")
-        public AccessTokenResponse getToken(@RequestParam("token") String token) {
-          RestTemplate restTemplate = new RestTemplate();
-          HttpHeaders headers = new HttpHeaders();
-          headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-          MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-          map.add("code", token);
-          map.add("client_id", clientId);
-          map.add("client_secret", clientSecret);
-          map.add("grant_type", "authorization_code");
-          HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
-          AccessTokenResponse response = restTemplate.postForObject(tokenUrl, request, AccessTokenResponse.class);
-         return response;
-        }
-      }
+    
 
 }
