@@ -24,7 +24,7 @@ public class OAuthController {
     AccessToken accessToken = new AccessToken();
     accessToken.setToken(token);
     accessTokenRepository.save(accessToken);
-    response.sendRedirect("/getToken");
+    response.sendRedirect("/data");
   }
 
   @GetMapping("/data")
